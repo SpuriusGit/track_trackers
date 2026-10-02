@@ -58,7 +58,7 @@ const messages = {
     catalogKicker: 'THE REPEAT CATALOG', whatBuild: 'What are we building', today: 'today?', sortAscending: 'SORT LOW TO HIGH', sortDescending: 'SORT HIGH TO LOW', allGenres: 'All genres', filterCategories: 'Filter categories', emptyCategory: 'No entries in this category yet.', selectedGenre: 'SELECTED GENRE', freeSearch: 'CUSTOM SEARCH', repos: 'repositories', topStars: 'TOP BY STARS', sourceGithub: 'SOURCE: GITHUB API', noDescription: 'No description', loadingGithub: 'Loading from GitHub…', noResults: 'No results to show yet.',
     anotherIdea: 'GOT ANOTHER IDEA?', checkIt: 'Let’s check', too: 'that too.', customSearchHint: 'Any search query against public GitHub Search.', searchPlaceholder: 'e.g. AI meal planner', searchLabel: 'Search GitHub', searchButton: 'Search GitHub', clearSearch: 'Clear search',
     madeWithLove: 'Made with love for new old ideas.', cache: '60 SEC CACHE', approximate: 'COUNTS ARE APPROXIMATE', searchNotIndex: 'GITHUB SEARCH IS NOT A COMPLETE INDEX', refresh: 'REFRESH', refreshLabel: 'Refresh data', rateLimit: 'Some counts are unavailable. GitHub limits anonymous search requests.',
-    chartLabel: 'Interactive 3D chart of category popularity', homeLabel: 'Vibe index home', languageLabel: 'Select language', languageEnglish: 'English', languageUkrainian: 'Ukrainian',
+    chartLabel: 'Interactive 3D chart of category popularity', homeLabel: 'Vibe index home', languageLabel: 'Select language', languageEnglish: 'English', languageUkrainian: 'Ukrainian', totalAnnouncement: 'repositories found',
     categories: { finance: { name: 'Personal finance tracker', short: 'Finance' }, weather: { name: 'Weather app', short: 'Weather' }, habits: { name: 'Habit tracker', short: 'Habits' }, ai: { name: 'AI wrapper', short: 'AI wrappers' }, tasks: { name: 'Task manager', short: 'Task managers' }, notes: { name: 'Markdown notes', short: 'Notes' } },
     errors: { rateLimit: 'GitHub has temporarily rate-limited search. Try again in a minute.', invalid: 'GitHub could not accept this search query.', network: 'Could not connect to GitHub.', http: 'GitHub returned an error.' },
   },
@@ -68,7 +68,7 @@ const messages = {
     catalogKicker: 'КАТАЛОГ ПОВТОРІВ', whatBuild: 'Що будуємо', today: 'сьогодні?', sortAscending: 'МЕНШЕ СПОЧАТКУ', sortDescending: 'БІЛЬШЕ СПОЧАТКУ', allGenres: 'Усі жанри', filterCategories: 'Фільтр категорій', emptyCategory: 'У цій категорії поки немає записів.', selectedGenre: 'ВИБРАНИЙ ЖАНР', freeSearch: 'ВІЛЬНИЙ ПОШУК', repos: 'репозиторіїв', topStars: 'ТОП ЗА ЗІРКАМИ', sourceGithub: 'ДЖЕРЕЛО: GITHUB API', noDescription: 'Без опису', loadingGithub: 'Завантажуємо з GitHub…', noResults: 'Поки немає результатів для показу.',
     anotherIdea: 'Є ІНША ІДЕЯ?', checkIt: 'Перевірмо її', too: 'теж.', customSearchHint: 'Будь-який запит до публічного GitHub Search.', searchPlaceholder: 'напр. AI meal planner', searchLabel: 'Пошук на GitHub', searchButton: 'Шукати на GitHub', clearSearch: 'Скинути пошук',
     madeWithLove: 'Зроблено з любов’ю до нових старих ідей.', cache: 'КЕШ 60 СЕК', approximate: 'ЦИФРИ ПРИБЛИЗНІ', searchNotIndex: 'ПОШУК GITHUB НЕ Є ПОВНИМ ІНДЕКСОМ', refresh: 'ОНОВИТИ', refreshLabel: 'Оновити дані', rateLimit: 'Деякі лічильники недоступні. GitHub обмежує частоту анонімного пошуку.',
-    chartLabel: 'Інтерактивна 3D-діаграма популярності категорій', homeLabel: 'Вайб-індекс, на головну', languageLabel: 'Вибрати мову', languageEnglish: 'Англійська', languageUkrainian: 'Українська',
+    chartLabel: 'Інтерактивна 3D-діаграма популярності категорій', homeLabel: 'Вайб-індекс, на головну', languageLabel: 'Вибрати мову', languageEnglish: 'Англійська', languageUkrainian: 'Українська', totalAnnouncement: 'репозиторіїв знайдено',
     categories: { finance: { name: 'Трекер фінансів', short: 'Фінанси' }, weather: { name: 'Застосунок погоди', short: 'Погода' }, habits: { name: 'Трекер звичок', short: 'Звички' }, ai: { name: 'AI-обгортка', short: 'AI-обгортки' }, tasks: { name: 'Менеджер задач', short: 'Таск-менеджери' }, notes: { name: 'Markdown-нотатки', short: 'Нотатки' } },
     errors: { rateLimit: 'GitHub тимчасово обмежив пошук. Спробуйте за хвилину.', invalid: 'GitHub не прийняв цей пошуковий запит.', network: 'Не вдалося зв’язатися з GitHub.', http: 'GitHub відповів помилкою.' },
   },
@@ -423,7 +423,7 @@ function App() {
 
       <footer className="footer"><div className="footer-note"><Sparkles size={15} /><span>{text.madeWithLove}</span></div><div className="footer-right"><span><Clock3 size={14} />{text.cache}</span><span>{text.approximate} <i>·</i> {text.searchNotIndex}</span><button className="refresh-button" onClick={() => { refreshAll(); customSearch.refresh() }} title={text.refreshLabel} aria-label={text.refreshLabel}><RefreshCw size={15} />{text.refresh}</button></div></footer>
       {anyError && <div className="rate-note"><TriangleAlert size={14} />{text.rateLimit}</div>}
-      {allCategoriesLoaded && <span className="sr-only">{formatNumber(total)} {text.repos} found</span>}
+      {allCategoriesLoaded && <span className="sr-only">{formatNumber(total)} {text.totalAnnouncement}</span>}
     </main>
   )
 }
