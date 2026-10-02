@@ -1,17 +1,19 @@
 # vibeindex
 
-Іронічний каталог повторюваних проєктів інді-розробників. Панель показує кількість публічних GitHub-репозиторіїв для знайомих жанрів, знаходить популярні збіги та дозволяє перевірити власний пошуковий запит. Висота 3D-стовпчиків масштабується за кількістю знайдених репозиторіїв; вибір стовпчика відкриває відповідну категорію.
+A tongue-in-cheek catalog of the same indie project ideas, counted across public GitHub repositories. Browse six familiar genres, inspect popular repositories, or search GitHub for another idea. The 3D chart scales each category by its live repository count and lets you select a genre.
 
-## Запуск
+The interface is available in English and Ukrainian. English is the default; the selected language is saved in the browser.
 
-Потрібен Node.js 20.19+ або 22.12+.
+## Run locally
+
+Requirements: Node.js 20.19+ or 22.12+.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Production-перевірка і збірка:
+## Check and build
 
 ```sh
 npm run lint
@@ -19,8 +21,8 @@ npm run build
 npm run preview
 ```
 
-## Дані
+## Data and limitations
 
-Застосунок звертається до публічного GitHub Repository Search API напряму з браузера. Кожен жанр має англомовний пошуковий запит; у панелі показується загальна кількість збігів і до шести найпопулярніших результатів. Дані кешуються в межах вкладки на 60 секунд. Новий запит та ручне оновлення використовують ті самі публічні API-ліміти.
+The app calls the public GitHub Repository Search API directly from the browser. Each category uses an English search query and shows the total number of matches plus up to six of the most-starred repositories. Results are cached in the current tab for 60 seconds. Manual refreshes and custom searches share GitHub's anonymous API rate limits.
 
-Лічильники приблизні: GitHub Search індексує не всі репозиторії, синтаксис запиту впливає на результат, а кількість може змінюватися. Для анонімних запитів GitHub встановлює суворий ліміт частоти; після відповіді 403/429 треба зачекати або налаштувати власний серверний проксі з токеном. Токен не слід зберігати у клієнтському коді.# track_trackers
+Counts are approximate: GitHub Search does not index every repository, query wording affects results, and totals can change. Anonymous search has a strict rate limit, so some categories may be temporarily unavailable. A server-side proxy can use an authenticated token if higher request limits are needed; never expose that token in client-side code.
